@@ -14,7 +14,7 @@ class Satuan_produk extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('satuan_produk');
+		$this->load->view('daftar_produk');
 	}
 
 	public function read()

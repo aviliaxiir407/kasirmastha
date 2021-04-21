@@ -25,28 +25,35 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Satuan Produk</h1>
+            <h1 class="m-0 text-dark">Daftar Produk</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+  
 
-    <!-- Main content -->
-    <section class="content">
+     <!-- Main content -->
+     <section class="content">
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" data-toggle="modal" data-target="#modal" onclick="add()">Add</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#modal">Add</button>
           </div>
           <div class="card-body">
-            <table class="table w-100 table-bordered table-hover" id="satuan_produk">
+            <table class="table w-100 table-bordered table-hover" id="stok_masuk">
               <thead>
-                <tr>
+              <tr>
                   <th>No</th>
-                  <th>Satuan</th>
-                  <th>Actions</th>
-                </tr>
+                  <th>Kategori</th>
+                  <th>Id produk</th>
+                  <th>Nama Produk</th>
+                  <th>Harga beli</th>
+                  <th>Harga jual</th>
+                  <th>Harga reseller</th>
+                  <th>Supplier</th>
+                  <th>Aksi</th>
+              </tr>
               </thead>
             </table>
           </div>
@@ -59,6 +66,7 @@
 
 </div>
 
+
 <div class="modal fade" id="modal">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -70,10 +78,29 @@
   </div>
   <div class="modal-body">
     <form id="form">
-      <input type="hidden" name="id">
       <div class="form-group">
-        <label>Satuan</label>
-        <input type="text" class="form-control" placeholder="Satuan" name="satuan" required>
+        <label>Nama Produk</label>
+        <input id="tanggal" type="text" class="form-control" placeholder="Kategori" name="tanggal" required>
+      </div>
+      <div class="form-group">
+        <label>Kategori</label>
+        <select name="barcode" id="barcode" class="form-control select2" required></select>
+      </div>
+      <div class="form-group">
+        <label>Harga Beli</label>
+        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+      </div>
+      <div class="form-group">
+        <label>Harga Jual</label>
+        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+      </div>
+      <div class="form-group">
+        <label>Harga Reseller</label>
+        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
+      </div>
+      <div class="form-group">
+        <label>Supplier</label>
+        <select name="barcode" id="barcode" class="form-control select2" required></select>
       </div>
       <button class="btn btn-success" type="submit">Add</button>
       <button class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -82,6 +109,7 @@
 </div>
 </div>
 </div>
+
 <!-- ./wrapper -->
 <?php $this->load->view('includes/footer'); ?>
 <?php $this->load->view('partials/footer'); ?>
