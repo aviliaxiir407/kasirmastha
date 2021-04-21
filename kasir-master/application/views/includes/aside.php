@@ -125,7 +125,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('laporan_refund') ?>" class="nav-link <?php echo $uri == 'laporan_refund' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Laporan refund </p>
               </a>
