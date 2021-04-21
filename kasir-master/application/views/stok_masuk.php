@@ -40,7 +40,7 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" data-toggle="modal" data-target="#modal">Add</button>
+           <a href="<?php echo base_url('stok_masuk/tambah'); ?>"> <button class="btn btn-success">Add</button> </a>
           </div>
           <div class="card-body">
             <table class="table w-100 table-bordered table-hover" id="stok_masuk">
@@ -48,10 +48,9 @@
                 <tr>
                   <th>No</th>
                   <th>Tanggal</th>
-                  <th>Barcode</th>
                   <th>Nama Produk</th>
                   <th>Jumlah</th>
-                  <th>Keterangan</th>
+                  <th>Total Harga</th>
                 </tr>
               </thead>
             </table>
@@ -63,52 +62,6 @@
   </div>
   <!-- /.content-wrapper -->
 
-</div>
-
-<div class="modal fade" id="modal">
-<div class="modal-dialog">
-<div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title">Add Data</h5>
-    <button class="close" data-dismiss="modal">
-      <span>&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form id="form">
-      <div class="form-group">
-        <label>Tanggal</label>
-        <input id="tanggal" type="text" class="form-control" placeholder="Kategori" name="tanggal" required>
-      </div>
-      <div class="form-group">
-        <label>Barcode</label>
-        <select name="barcode" id="barcode" class="form-control select2" required></select>
-      </div>
-      <div class="form-group">
-        <label>Jumlah</label>
-        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
-      </div>
-      <div class="form-group">
-        <label>Keterangan</label>
-        <select name="keterangan" class="form-control" onchange="checkKeterangan(this)">
-          <option value="penambahan">Penambahan</option>
-          <option value="lain">Lain</option>
-        </select>
-      </div>
-      <div class="form-group supplier">
-        <label>Supplier</label>
-        <select name="supplier" class="form-control select2" id="supplier"></select>
-      </div>
-      <div class="form-group lain d-none">
-        <label>Lain</label>
-        <input type="text" class="form-control" placeholder="Lain">
-      </div>
-      <button class="btn btn-success" type="submit">Add</button>
-      <button class="btn btn-danger" data-dismiss="modal">Close</button>
-    </form>
-  </div>
-</div>
-</div>
 </div>
 <!-- ./wrapper -->
 <?php $this->load->view('includes/footer'); ?>

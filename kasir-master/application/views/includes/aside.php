@@ -39,6 +39,18 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+            <a href="<?php echo site_url('pengguna') ?>" class="nav-link <?php echo $uri == 'pengguna' ? 'active' : 'no' ?>">
+              <i class="fas fa-user nav-icon"></i>
+              <p>Pengguna</p>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?php echo site_url('transaksi') ?>" class="nav-link <?php echo $uri == 'transaksi' ? 'active' : 'no' ?>">
+            <i class="fas fa-money-bill nav-icon"></i>
+            <p>Transaksi</p>
+          </a>
+        </li>
         <li class="nav-item has-treeview <?php echo $uri == 'produk' || $uri == 'kategori_produk' || $uri == 'satuan_produk' ? 'menu-open' : 'no' ?>">
           <a href="#" class="nav-link <?php echo $uri == 'produk' || $uri == 'kategori_produk' || $uri == 'satuan_produk' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-box"></i>
@@ -60,15 +72,7 @@
               <a href="<?php echo site_url('satuan_produk') ?>" class="nav-link <?php echo $uri == 'satuan_produk' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
-                  Satuan Produk
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo site_url('produk') ?>" class="nav-link <?php echo $uri == 'produk' ? 'active' : 'no' ?>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Produk
+                  Daftar Produk
                 </p>
               </a>
             </li>
@@ -77,7 +81,7 @@
         <li class="nav-item has-treeview <?php echo $uri == 'stok_masuk' || $uri == 'stok_keluar' ? 'menu-open' : 'no' ?>">
           <a href="#" class="nav-link <?php echo $uri == 'stok_masuk' || $uri == 'stok_keluar' ? 'active' : 'no' ?>">
             <i class="fas fa-archive nav-icon"></i>
-            <p>Stok</p>
+            <p>Inventory</p>
             <i class="right fas fa-angle-right"></i>
           </a>
           <ul class="nav-treeview">
@@ -90,16 +94,10 @@
             <li class="nav-item">
               <a href="<?php echo site_url('stok_keluar') ?>" class="nav-link <?php echo $uri == 'stok_keluar' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Stok Keluar</p>
+                <p>Daftar Stok</p>
               </a>
             </li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a href="<?php echo site_url('transaksi') ?>" class="nav-link <?php echo $uri == 'transaksi' ? 'active' : 'no' ?>">
-            <i class="fas fa-money-bill nav-icon"></i>
-            <p>Transaksi</p>
-          </a>
         </li>
         <li class="nav-item has-treeview <?php echo $uri == 'laporan_penjualan' || $uri == 'laporan_stok_masuk' || $uri == 'laporan_stok_keluar' ? 'menu-open' : 'no' ?>">
           <a href="<?php echo site_url('laporan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' || $uri == 'laporan_stok_masuk' || $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
@@ -111,7 +109,7 @@
             <li class="nav-item">
               <a href="<?php echo site_url('laporan_penjualan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Penjualan</p>
+                <p>Laporan Harian</p>
               </a>
             </li>
             <li class="nav-item">
@@ -123,7 +121,25 @@
             <li class="nav-item">
               <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Stok Keluar</p>
+                <p>Laporan Bulanan </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan refund </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Piutang </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laporan Pengluaran </p>
               </a>
             </li>
           </ul>
@@ -133,12 +149,6 @@
             <a href="<?php echo site_url('pengaturan') ?>" class="nav-link <?php echo $uri == 'pengaturan' ? 'active' : 'no' ?>">
               <i class="fas fa-cog nav-icon"></i>
               <p>Pengaturan</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo site_url('pengguna') ?>" class="nav-link <?php echo $uri == 'pengguna' ? 'active' : 'no' ?>">
-              <i class="fas fa-user nav-icon"></i>
-              <p>Pengguna</p>
             </a>
           </li>
         <?php endif ?>
