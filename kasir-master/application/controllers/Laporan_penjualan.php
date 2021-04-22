@@ -8,7 +8,17 @@ class Laporan_penjualan extends CI_Controller {
 		if ($this->session->userdata('status') !== 'login' ) {
 			redirect('/');
 		}
-		$this->load->view('laporan_penjualan');
+		$this->load->view('penjualan_harian');
+	}
+
+	public function bulanan()
+	{
+		$this->load->view('penjualan_bulanan');
+	}
+
+	public function laporan_pengeluaran()
+	{
+		$this->load->view('laporan_pengeluaran');
 	}
 
 }

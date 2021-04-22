@@ -35,15 +35,9 @@
           <a href="<?php echo site_url('pelanggan') ?>" class="nav-link <?php echo $uri == 'pelanggan' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-address-book"></i>
             <p>
-              Pelanggan
+              Reseller
             </p>
           </a>
-        </li>
-        <li class="nav-item">
-            <a href="<?php echo site_url('pengguna') ?>" class="nav-link <?php echo $uri == 'pengguna' ? 'active' : 'no' ?>">
-              <i class="fas fa-user nav-icon"></i>
-              <p>Pengguna</p>
-            </a>
         </li>
         <li class="nav-item">
           <a href="<?php echo site_url('transaksi') ?>" class="nav-link <?php echo $uri == 'transaksi' ? 'active' : 'no' ?>">
@@ -97,6 +91,12 @@
                 <p>Daftar Stok</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('stok_masuk') ?>" class="nav-link <?php echo $uri == 'stok_masuk' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Stok Keluar</p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item has-treeview <?php echo $uri == 'laporan_penjualan' || $uri == 'laporan_stok_masuk' || $uri == 'laporan_stok_keluar' ? 'menu-open' : 'no' ?>">
@@ -106,6 +106,12 @@
             <i class="right fas fa-angle-right"></i>
           </a>
           <ul class="nav-treeview">
+          <li class="nav-item">
+              <a href="<?php echo site_url('laporan_penjualan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Detail Penjualan</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="<?php echo site_url('laporan_penjualan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
@@ -113,13 +119,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('laporan_stok_masuk') ?>" class="nav-link <?php echo $uri == 'laporan_stok_masuk' ? 'active' : 'no' ?>">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Stok Masuk</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('laporan_penjualan/bulanan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan/bulanan' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Laporan Bulanan </p>
               </a>
@@ -137,7 +137,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('laporan_stok_keluar') ?>" class="nav-link <?php echo $uri == 'laporan_stok_keluar' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('laporan_penjualan/laporan_pengeluaran') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan/laporan_pengeluaran' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Laporan Pengluaran </p>
               </a>
