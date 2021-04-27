@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Produk</h1>
+            <h1 class="m-0 text-dark">Daftar Stok</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -46,13 +46,10 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Barcode</th>
+                  <th>ID Produk</th>
                   <th>Nama</th>
-                  <th>Satuan</th>
-                  <th>Kategori</th>
-                  <th>Harga</th>
-                  <th>Stok</th>
-                  <th>Actions</th>
+                  <th>Harga Beli</th>
+                  <th>Stok Akhir</th>
                 </tr>
               </thead>
             </table>

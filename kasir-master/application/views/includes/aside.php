@@ -86,7 +86,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('daftar_stok') ?>" class="nav-link <?php echo $uri == 'daftar_stok' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('stok_masuk/list_stok') ?>" class="nav-link <?php echo $uri == 'stok_masuk/list_stok' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Daftar Stok</p>
               </a>

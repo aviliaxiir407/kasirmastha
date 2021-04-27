@@ -17,6 +17,11 @@ class Stok_masuk extends CI_Controller {
 		$this->load->view('stok_masuk');
 	}
 
+	public function list_stok()
+	{
+		$this->load->view('daftar_stok');
+	}
+	
 	public function tambah()
 	{
 		$this->load->view('tambah_stok');
