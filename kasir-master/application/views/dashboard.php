@@ -35,7 +35,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3 id="transaksi_hari">0</h3>
-                <p>Transaksi Hari Ini</p>
+                <p>Penjualan Hari Ini</p>
               </div>
               <div class="icon">
                 <i class="fas fa-shopping-cart"></i>
@@ -49,7 +49,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3 id="transaksi_terakhir">0</h3>
-                <p>Produk Transaksi Terakhir</p>
+                <p>Pengeluaran Hari Ini</p>
               </div>
               <div class="icon">
                 <i class="fas fa-money-bill"></i>
@@ -63,7 +63,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3 id="stok_hari">0</h3>
-                <p>Stok Masuk Hari Ini</p>
+                <p>Transaksi Hari Ini</p>
               </div>
               <div class="icon">
                 <i class="fas fa-archive"></i>
@@ -79,7 +79,19 @@
           <div class="col-md-6">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Produk Terlaris</h3>
+                <h3 class="card-title">Produk Terjual Hari Ini</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="produkTerlaris" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Pengeluaran</h3>
               </div>
               <div class="card-body">
                 <div class="chart">
@@ -91,7 +103,20 @@
           <div class="col-md-6">
             <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Stok Produk</h3>
+                <h3 class="card-title">Produk Terjual Hari Ini</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart" style="height: 250px;max-height: 250px; overflow-y: scroll;">
+                  <ul class="list-group" id="stok_produk"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">Metode Pembayaran</h3>
               </div>
               <div class="card-body">
                 <div class="chart" style="height: 250px;max-height: 250px; overflow-y: scroll;">

@@ -107,7 +107,7 @@
           </a>
           <ul class="nav-treeview">
           <li class="nav-item">
-              <a href="<?php echo site_url('laporan_penjualan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('detail') ?>" class="nav-link <?php echo $uri == 'detail' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Detail Penjualan</p>
               </a>
