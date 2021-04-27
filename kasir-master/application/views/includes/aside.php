@@ -86,13 +86,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('stok_keluar') ?>" class="nav-link <?php echo $uri == 'stok_keluar' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('stok_masuk/list_stok') ?>" class="nav-link <?php echo $uri == 'stok_masuk/list_stok' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Daftar Stok</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('stok_masuk') ?>" class="nav-link <?php echo $uri == 'stok_masuk' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('stok_keluar') ?>" class="nav-link <?php echo $uri == 'stok_keluar' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Stok Keluar</p>
               </a>
