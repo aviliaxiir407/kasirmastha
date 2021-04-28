@@ -52,6 +52,7 @@ function checkStok() {
                 jumlah = parseInt($("#jumlah").val()),
                 stok = parseInt(res.stok),
                 harga = parseInt(res.harga),
+                hargaTotal = parseInt(res.harga) * parseInt($("#jumlah").val()),
                 dataBarcode = res.barcode,
                 total = parseInt($("#total").html());
             if (stok < jumlah) Swal.fire("Gagal", "Stok Tidak Cukup", "warning");
@@ -80,6 +81,7 @@ function checkStok() {
                         nama_produk,
                         harga,
                         jumlah,
+                        hargaTotal,
                         `<button name="${barcode}" class="btn btn-sm btn-danger" onclick="remove('${barcode}')">Hapus</btn>`]).draw();
                     $("#total").html(total + harga * jumlah);
                     $("#jumlah").val("");
@@ -89,6 +91,7 @@ function checkStok() {
             }
         }
     })
+    console.log("masuk");
 }
 
 function bayarCetak() {

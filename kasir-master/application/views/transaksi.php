@@ -49,32 +49,43 @@
       <div class="card">
         <div class="card-header">
         <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Barcode</label>
-              <div class="form-inline">
-                <select id="barcode" class="form-control select2 col-sm-6" onchange="getNama()"></select>
-                <span class="ml-3 text-muted" id="nama_produk"></span>
+          <div class="col-sm-6 text-left nota">
+            <div>
+              <div class="mb-2">
+                <b class="mr-2">Nota</b> <span id="nota"></span>
               </div>
-              <small class="form-text text-muted" id="sisa"></small>
             </div>
-            <div class="form-group">
-              <label>Jumlah</label>
-              <input type="number" class="form-control col-sm-6" placeholder="Jumlah" id="jumlah" onkeyup="checkEmpty()">
-            </div>
-            <div class="form-group">
-              <button id="tambah" class="btn btn-success" onclick="checkStok()" disabled>Tambah</button>
-              <button id="bayar" class="btn btn-success" data-toggle="modal" data-target="#modal" disabled>Bayar</button>
-            </div>
+            <div class="mb-2"><select id="pelanggan" style="width: 200px;" class="form-control select2 col-sm-6" onchange="getNama()"></select></div>
+            <div class="mb-2"><input id="tanggal" style="width: 200px;" type="text" class="form-control" placeholder="Tanggal" name="tanggal" required></div>
           </div>
-          <div class="col-sm-6 d-flex justify-content-end text-right nota">
+          <div class="col-sm-6 text-right nota">
             <div>
               <div class="mb-0">
-                <b class="mr-2">Nota</b> <span id="nota"></span>
+                <b class="mr-2">Total Harga</b>
               </div>
               <span id="total" style="font-size: 80px; line-height: 1" class="text-danger">0</span>
             </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <div style="display: inline-block; vertical-align: bottom;">
+                <b class="mr-2">Produk</b>
+                <select id="barcode" style="width: 200px;" class="form-control select2 col-sm-6" onchange="getNama()"></select>
+              </div>
+              <div style="display: inline-block; vertical-align: bottom; width: 100px;">
+                <input type="number" class="form-control" placeholder="Jumlah" id="jumlah" onkeyup="checkEmpty()">
+              </div>
+              <button style="display: inline-block; vertical-align: bottom;" id="tambah" class="btn btn-success" onclick="checkStok()" disabled>Tambah</button>
+              <button style="display: inline-block; vertical-align: bottom;" id="bayar" class="btn btn-success" data-toggle="modal" data-target="#modal" disabled>Bayar</button>
+              <div>
+                <span class="text-muted" id="nama_produk"></span>
+                <small class="text-muted" id="sisa"></small>
+              </div>
+            </div>
+          </div>
+          
         </div>
         </div>
         <div class="card-body">
@@ -85,6 +96,7 @@
                 <th>Nama</th>
                 <th>Harga</th>
                 <th>Jumlah</th>
+                <th>HargaTotal</th>
                 <th>Actions</th>
               </tr>
             </thead>
