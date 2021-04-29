@@ -80,7 +80,7 @@
               <button style="display: inline-block; vertical-align: bottom;" id="tambah" class="btn btn-success" onclick="checkStok()" disabled>Tambah</button>
               <button style="display: inline-block; vertical-align: bottom;" id="bayar" class="btn btn-success" data-toggle="modal" data-target="#modal" disabled>Bayar</button>
               <div>
-                <span class="text-muted" id="nama_produk"></span>
+                <!-- <span class="text-muted" id="nama_produk"></span> -->
                 <small class="text-muted" id="sisa"></small>
               </div>
             </div>
@@ -101,7 +101,33 @@
               </tr>
             </thead>
           </table>
+          <div class="row" style="margin-top: 2rem;">
+            <div class="col-sm" style="height: 150px; border: 1px solid #ced4da; border-radius: .25rem; margin: 0 10px;">
+              Delivery
+              <select class="form-control form-control-sm" place>
+                <option>Marketplace</option>
+                <option value="bukalapak">bukalapak</option>
+                <option value="shopee">shopee</option>
+                <option value="shopee">tokopedia cs1</option>
+                <option value="shopee">tokopedia cs3</option>
+              </select>
+              <select class="form-control form-control-sm" place>
+                <option>Jenis Pengiriman</option>
+                <option value="JNE">JNE</option>
+                <option value="JNT">JNT</option>
+                <option value="pos indonesia">Pos Indonesia</option>
+              </select>
+              <input class="form-control form-control-sm" type="number" placeholder="Ongkir">
+            </div>
+            <div class="col-sm" style="height: 150px; border: 1px solid #ced4da; border-radius: .25rem;margin: 0 10px;">
+              Piutang
+              <input class="form-control form-control-sm" type="number" placeholder="Nominal">
+              <input class="form-control form-control-sm" type="number" placeholder="Kurang">
+            </div>
+            
+          </div>
         </div>
+        
       </div>
     </div><!-- /.container-fluid -->
   </section>
@@ -122,14 +148,14 @@
   </div>
   <div class="modal-body">
     <form id="form">
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Tanggal</label>
         <input type="text" class="form-control" name="tanggal" id="tanggal" required>
       </div>
       <div class="form-group">
         <label>Pelanggan</label>
         <select name="pelannggan" id="pelanggan" class="form-control select2"></select>
-      </div>
+      </div> -->
       <div class="form-group">
         <label>Jumlah Uang</label>
         <input placeholder="Jumlah Uang" type="number" class="form-control" name="jumlah_uang" onkeyup="kembalian()" required>
@@ -137,6 +163,20 @@
       <div class="form-group">
         <label>Diskon</label>
         <input placeholder="Diskon" type="number" class="form-control" onkeyup="kembalian()" name="diskon">
+      </div>
+      <div class="form-group">
+        <label>Jenis Bayar</label>
+        <select name="pelannggan" id="jenis_bayar" class="form-control select2">
+          <option>Bank / Transfer</option>
+          <option>Cash</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Bank</label>
+        <select name="pelannggan" id="opsi_bank" class="form-control select2">
+          <option>BCA</option>
+          <option>BRI</option>
+        </select>
       </div>
       <div class="form-group">
         <b>Total Bayar:</b> <span class="total_bayar"></span>

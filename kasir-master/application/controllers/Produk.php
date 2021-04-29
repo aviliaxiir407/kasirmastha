@@ -98,7 +98,8 @@ class Produk extends CI_Controller {
 		foreach ($search as $barcode) {
 			$data[] = array(
 				'id' => $barcode->id,
-				'text' => $barcode->barcode
+				// 'text' => $barcode->barcode,
+				'text' => $barcode->nama_produk
 			);
 		}
 		echo json_encode($data);
