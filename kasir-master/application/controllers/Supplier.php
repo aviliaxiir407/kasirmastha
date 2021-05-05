@@ -14,67 +14,66 @@ class Supplier extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('supplier');
-	}
-
-	public function read()
-	{
-		header('Content-type: application/json');
-		if ($this->supplier_model->read()->num_rows() > 0) {
-			foreach ($this->supplier_model->read()->result() as $supplier) {
-				$data[] = array(
-					'nama' => $supplier->nama,
-					'alamat' => $supplier->alamat,
-					'telepon' => $supplier->telepon,
-					'keterangan' => $supplier->keterangan,
-					'action' => '<button class="btn btn-sm btn-success" onclick="edit('.$supplier->id.')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove('.$supplier->id.')">Delete</button>'
-				);
-			}
-		} else {
-			$data = array();
-		}
-		$supplier = array(
-			'data' => $data
-		);
-		echo json_encode($supplier);
+		$data['supplier'] = $this->supplier_model->viewsupplier();
+        $this->load->view('supplier', $data);
 	}
 
 	public function add()
 	{
-		$data = array(
-			'nama' => $this->input->post('nama'),
-			'alamat' => $this->input->post('alamat'),
-			'telepon' => $this->input->post('telepon'),
-			'keterangan' => $this->input->post('keterangan')
-		);
-		if ($this->supplier_model->create($data)) {
-			echo json_encode('sukses');
-		}
+        $validation = $this->form_validation; //untuk menghemat penulisan kode
+
+        $validation->set_rules('nama', 'Nama', 'required');
+        $validation->set_rules('alamat', 'Alamat', 'required');
+        $validation->set_rules('telp', 'Telepon', 'required');
+        $validation->set_rules('ket', 'Keterangan', 'required');
+
+        if($validation->run() == FALSE) //jika form validation gagal tampilkan kembali form tambahnya
+        {
+            $this->load->view('tambah_supplier');
+        } else {
+          $this->supplier_model->tambah();
+          redirect('supplier');
+        }
 	}
 
-	public function delete()
+	public function delete($id_supplier)
 	{
-		$id = $this->input->post('id');
-		if ($this->supplier_model->delete($id)) {
-			echo json_encode('sukses');
-		}
+		$this->supplier_model->delete($id_supplier);
+		echo '<script>
+                alert("Sukses Menghapus Data ");
+                window.location="'.base_url('supplier').'"
+            </script>';
 	}
 
-	public function edit()
-	{
-		$id = $this->input->post('id');
-		$data = array(
-			'nama' => $this->input->post('nama'),
-			'alamat' => $this->input->post('alamat'),
-			'telepon' => $this->input->post('telepon'),
-			'keterangan' => $this->input->post('keterangan')
-		);
-		if ($this->supplier_model->update($id,$data)) {
-			echo json_encode('sukses');
+	function edit($id_supplier){
+		$where = array('id_supplier' => $id_supplier);
+		$data['supplier'] = $this->supplier_model->edit_data($where,'supplier')->result();
+		$this->load->view('edit_supplier',$data);
 		}
-	}
+	
+	function update(){
+			$id_supplier = $this->input->post('id_supplier');
+			$nama = $this->input->post('nama');
+			$alamat = $this->input->post('alamat');
+			$telp = $this->input->post('telp');
+			$keterangan = $this->input->post('ket');
+	
+			$data = array(
+				'nama' => $nama,
+				'alamat' => $alamat,
+				'telepon' => $telp,
+				'keterangan' => $keterangan
+			);
+		 
+			$where = array(
+				'id_supplier' => $id_supplier
+			);
+		 
+			$this->supplier_model->update_data($where,$data,'supplier');
+			redirect('supplier');
+		}
 
-	public function get_supplier()
+	/*public function get_supplier()
 	{
 		$id = $this->input->post('id');
 		$supplier = $this->supplier_model->getSupplier($id);
@@ -95,7 +94,7 @@ class Supplier extends CI_Controller {
 			);
 		}
 		echo json_encode($data);
-	}
+	}*/
 
 }
 

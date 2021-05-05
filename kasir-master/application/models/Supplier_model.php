@@ -5,31 +5,39 @@ class Supplier_model extends CI_Model {
 
 	private $table = 'supplier';
 
-	public function create($data)
+	public function tambah()
+    {
+        $data = array(
+            'nama' => $this->input->post('nama', true),
+            'alamat' => $this->input->post('alamat', true),
+            'telepon' => $this->input->post('telp', true),
+            'keterangan' => $this->input->post('ket', true)
+        );
+          $this->db->insert($this->table, $data);
+    }
+
+	public function viewsupplier()
 	{
-		return $this->db->insert($this->table, $data);
+		return $this->db->get($this->table)->result_array();
 	}
 
-	public function read()
-	{
-		return $this->db->get($this->table);
-	}
+	public function delete($id_supplier)
+    {
+        $this->db->where('id_supplier', $id_supplier);
+        $this->db->delete($this->table);
+    }
 
-	public function update($id, $data)
-	{
-		$this->db->where('id', $id);
-		return $this->db->update($this->table, $data);
-	}
-
-	public function delete($id)
-	{
-		$this->db->where('id', $id);
-		return $this->db->delete($this->table);
-	}
+	function edit_data($where,$table){      
+        return $this->db->get_where($table,$where);
+    }
+    function update_data($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
 
 	public function getSupplier($id)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id_supplier', $id);
 		return $this->db->get($this->table);
 	}
 

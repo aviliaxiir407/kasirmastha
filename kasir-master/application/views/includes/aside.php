@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo site_url('pelanggan') ?>" class="nav-link <?php echo $uri == 'pelanggan' ? 'active' : 'no' ?>">
+          <a href="<?php echo site_url('reseller') ?>" class="nav-link <?php echo $uri == 'reseller' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-address-book"></i>
             <p>
               Reseller
