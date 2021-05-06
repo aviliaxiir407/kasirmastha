@@ -14,17 +14,18 @@ class Kategori_produk extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('kategori_produk');
+		$data['kategori'] = $this->kategori_produk_model->read();
+        $this->load->view('kategori_produk', $data);
 	}
 
-	public function read()
+	/*public function read()
 	{
 		header('Content-type: application/json');
 		if ($this->kategori_produk_model->read()->num_rows() > 0) {
 			foreach ($this->kategori_produk_model->read()->result() as $kategori_produk) {
 				$data[] = array(
 					'kategori' => $kategori_produk->kategori,
-					'action' => '<button class="btn btn-sm btn-success" onclick="edit('.$kategori_produk->id.')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove('.$kategori_produk->id.')">Delete</button>'
+					'action' => '<button class="btn btn-sm btn-danger" onclick="remove('.$kategori_produk->id_kategori.')">Delete</button>'
 				);
 			}
 		} else {
@@ -34,7 +35,7 @@ class Kategori_produk extends CI_Controller {
 			'data' => $data
 		);
 		echo json_encode($kategori_produk);
-	}
+	}*/
 
 	public function add()
 	{
@@ -46,23 +47,21 @@ class Kategori_produk extends CI_Controller {
 		}
 	}
 
-	public function delete()
+	/*`public function delete()
 	{
-		$id = $this->input->post('id');
-		if ($this->kategori_produk_model->delete($id)) {
+		$id_kategori = $this->input->post('id_kategori');
+		if ($this->kategori_produk_model->delete($id_kategori)) {
 			echo json_encode('sukses');
 		}
-	}
+	}*/
 
-	public function edit()
+	public function delete($id_kategori)
 	{
-		$id = $this->input->post('id');
-		$data = array(
-			'kategori' => $this->input->post('kategori')
-		);
-		if ($this->kategori_produk_model->update($id,$data)) {
-			echo json_encode('sukses');
-		}
+		$this->kategori_produk_model->delete($id_kategori);
+		echo '<script>
+                alert("Sukses Menghapus Data ");
+                window.location="'.base_url('kategori_produk').'"
+            </script>';
 	}
 
 	public function get_kategori()

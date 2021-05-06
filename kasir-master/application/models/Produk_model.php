@@ -5,21 +5,48 @@ class Produk_model extends CI_Model {
 
 	private $table = 'produk';
 
-	public function create($data)
+	public function view()
 	{
-		return $this->db->insert($this->table, $data);
+		$this->db->order_by('id_produk', 'ASC');
+        return $this->db->from('produk')
+          ->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
+		  ->join('supplier', 'produk.id_supplier=supplier.id_supplier')
+          ->get()
+		  ->result_array();
 	}
 
-	public function read()
-	{
-		$this->db->select('produk.id, produk.barcode, produk.nama_produk, produk.harga, produk.stok, kategori_produk.kategori, satuan_produk.satuan');
-		$this->db->from($this->table);
-		$this->db->join('kategori_produk', 'produk.kategori = kategori_produk.id');
-		$this->db->join('satuan_produk', 'produk.satuan = satuan_produk.id');
-		return $this->db->get();
+	public function get_kategori(){
+		$query = $this->db->get('kategori_produk')->result();
+		return $query;
 	}
 
-	public function update($id, $data)
+	public function get_supplier(){
+		$query = $this->db->get('supplier')->result();
+		return $query;
+	}
+
+	public function tambah()
+    {
+        $data = array(
+            'nama_produk' => $this->input->post('nama', true),
+            'id_kategori' => $this->input->post('kategori', true),
+            'id_supplier' =>   $this->input->post('supplier', true),
+            'harga_beli' => $this->input->post('beli', true),
+			'harga_jual' => $this->input->post('jual', true),
+			'harga_reseller' => $this->input->post('resell', true)
+        );
+          $this->db->insert($this->table, $data);
+    }
+
+	function edit_data($where,$table){  
+        return $this->db->get_where($table,$where);
+    }
+    function update_data($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
+
+	/*public function update($id, $data)
 	{
 		$this->db->where('id', $id);
 		return $this->db->update($this->table, $data);
@@ -72,6 +99,7 @@ class Produk_model extends CI_Model {
 	{
 		return $this->db->query('SELECT produk.nama_produk, produk.stok FROM `produk` ORDER BY CONVERT(stok, decimal) DESC LIMIT 50')->result();
 	}
+	*/
 
 }
 

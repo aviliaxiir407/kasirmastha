@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Satuan Produk</title>
+  <title>Daftar Produk</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
@@ -38,15 +38,15 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-success" data-toggle="modal" data-target="#modal">Add</button>
+          <a href="<?= base_url('produk/add/'); ?>"><button class="btn btn-success">Add</button></a>
           </div>
           <div class="card-body">
-            <table class="table w-100 table-bordered table-hover" id="stok_masuk">
+            <table class="table w-100 table-bordered table-hover">
               <thead>
               <tr>
                   <th>No</th>
                   <th>Kategori</th>
-                  <th>Id produk</th>
+                  <th>ID produk</th>
                   <th>Nama Produk</th>
                   <th>Harga beli</th>
                   <th>Harga jual</th>
@@ -55,6 +55,23 @@
                   <th>Aksi</th>
               </tr>
               </thead>
+              <tbody>
+                   <?php $no = 1; 
+                   foreach ($produk as $m) { ?>
+                    <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $m['kategori']; ?></td>
+                    <td><?= $m['id_produk']; ?></td>
+                    <td><?= $m['nama_produk']; ?></td>
+                    <td><?= $m['harga_beli']; ?></td>
+                    <td><?= $m['harga_jual']; ?></td>
+                    <td><?= $m['harga_reseller']; ?></td>
+                    <td><?= $m['nama']; ?></td>
+                    <td class="text-center"><a href="<?= base_url('produk/edit/'); ?><?= $m['id_produk']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="edit">Edit</button></a>
+                    <!--<a href="<?= base_url('reseller/delete/'); ?><?= $m['id_reseller']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="hapus">Hapus</button></a></td>
+                    </tr>-->
+                    <?php } ?>
+                </tbody>
             </table>
           </div>
         </div>
@@ -66,50 +83,6 @@
 
 </div>
 
-
-<div class="modal fade" id="modal">
-<div class="modal-dialog">
-<div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title">Add Data</h5>
-    <button class="close" data-dismiss="modal">
-      <span>&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form id="form">
-      <div class="form-group">
-        <label>Nama Produk</label>
-        <input id="tanggal" type="text" class="form-control" placeholder="Kategori" name="tanggal" required>
-      </div>
-      <div class="form-group">
-        <label>Kategori</label>
-        <select name="barcode" id="barcode" class="form-control select2" required></select>
-      </div>
-      <div class="form-group">
-        <label>Harga Beli</label>
-        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
-      </div>
-      <div class="form-group">
-        <label>Harga Jual</label>
-        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
-      </div>
-      <div class="form-group">
-        <label>Harga Reseller</label>
-        <input type="number" class="form-control" placeholder="Jumlah" name="jumlah" required>
-      </div>
-      <div class="form-group">
-        <label>Supplier</label>
-        <select name="barcode" id="barcode" class="form-control select2" required></select>
-      </div>
-      <button class="btn btn-success" type="submit">Add</button>
-      <button class="btn btn-danger" data-dismiss="modal">Close</button>
-    </form>
-  </div>
-</div>
-</div>
-</div>
-
 <!-- ./wrapper -->
 <?php $this->load->view('includes/footer'); ?>
 <?php $this->load->view('partials/footer'); ?>
@@ -117,13 +90,5 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
-<script>
-  var readUrl = '<?php echo site_url('satuan_produk/read') ?>';
-  var addUrl = '<?php echo site_url('satuan_produk/add') ?>';
-  var removeUrl = '<?php echo site_url('satuan_produk/delete') ?>';
-  var editUrl = '<?php echo site_url('satuan_produk/edit') ?>';
-  var get_satuanUrl = '<?php echo site_url('satuan_produk/get_satuan') ?>';
-</script>
-<script src="<?php echo base_url('assets/js/satuan_produk.min.js') ?>"></script>
 </body>
 </html>
