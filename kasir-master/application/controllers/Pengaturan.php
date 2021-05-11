@@ -13,7 +13,7 @@ class Pengaturan extends CI_Controller {
 	
 	public function index()
 	{
-		$toko = $this->db->get('toko')->row();
+		$toko = $this->db->get('master.toko')->row();
 		$data['toko'] = $toko;
 		$this->load->view('pengaturan', $data);
 	}
@@ -25,10 +25,10 @@ class Pengaturan extends CI_Controller {
 			'alamat' => $this->input->post('alamat')
 		);
 		$this->db->where('id', 1);
-		if ($this->db->update('toko', $data)) {
+		if ($this->db->update('master.toko', $data)) {
 			$this->db->select('nama, alamat');
-			$toko = $this->db->get('toko')->row();
-			$this->session->set_userdata('toko', $toko);
+			$toko = $this->db->get('master.toko')->row();
+			$this->session->set_userdata('master.toko', $toko);
 			echo json_encode('sukses');
 		}
 	}

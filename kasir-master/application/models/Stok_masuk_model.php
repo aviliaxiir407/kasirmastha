@@ -3,9 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Stok_masuk_model extends CI_Model {
 
-	private $table = 'stok_masuk';
+	private $table = 'pembelian';
 
-	public function create($data)
+	public function supplier(){
+		$query = $this->db->get('master.supplier')->result();
+		return $query;
+	}
+
+	public function barang(){
+		$query = $this->db->get('master.produk')->result();
+		return $query;
+	}
+
+	/*public function create($data)
 	{
 		return $this->db->insert($this->table, $data);
 	}
@@ -44,7 +54,7 @@ class Stok_masuk_model extends CI_Model {
 	public function stokHari($hari)
 	{
 		return $this->db->query("SELECT SUM(jumlah) AS total FROM stok_masuk WHERE DATE_FORMAT(tanggal, '%d %m %Y') = '$hari'")->row();
-	}
+	}*/
 
 }
 

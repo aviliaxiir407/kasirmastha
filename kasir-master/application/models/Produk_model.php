@@ -3,25 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produk_model extends CI_Model {
 
-	private $table = 'produk';
+	private $table = 'master.produk';
 
 	public function view()
 	{
 		$this->db->order_by('id_produk', 'ASC');
-        return $this->db->from('produk')
-          ->join('kategori_produk', 'produk.id_kategori=kategori_produk.id_kategori')
-		  ->join('supplier', 'produk.id_supplier=supplier.id_supplier')
+        return $this->db->from('master.produk')
+          ->join('master.kategori_produk', 'master.produk.id_kategori=master.kategori_produk.id_kategori')
           ->get()
 		  ->result_array();
+
+		  
 	}
 
 	public function get_kategori(){
-		$query = $this->db->get('kategori_produk')->result();
-		return $query;
-	}
-
-	public function get_supplier(){
-		$query = $this->db->get('supplier')->result();
+		$query = $this->db->get('master.kategori_produk')->result();
 		return $query;
 	}
 
@@ -30,7 +26,6 @@ class Produk_model extends CI_Model {
         $data = array(
             'nama_produk' => $this->input->post('nama', true),
             'id_kategori' => $this->input->post('kategori', true),
-            'id_supplier' =>   $this->input->post('supplier', true),
             'harga_beli' => $this->input->post('beli', true),
 			'harga_jual' => $this->input->post('jual', true),
 			'harga_reseller' => $this->input->post('resell', true)

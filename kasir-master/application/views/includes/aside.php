@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="<?php echo site_url('') ?>" class="brand-link text-center">
-    <span class="brand-text font-weight-light"><?php echo $this->session->userdata('toko')->nama ?></span>
+    <span class="brand-text font-weight-light"><?php echo $this->session->userdata('master.toko')->nama ?></span>
   </a>
   <?php $uri = $this->uri->segment(1) ?>
   <?php $role = $this->session->userdata('role'); ?>
@@ -23,22 +23,59 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="<?php echo site_url('supplier') ?>" class="nav-link <?php echo $uri == 'supplier' ? 'active' : 'no' ?>">
-            <i class="nav-icon fas fa-truck"></i>
+
+        <li class="nav-item has-treeview">
+          <a href="<?php echo site_url('produk') ?>" class="nav-link <?php echo $uri == 'produk' ? 'active' : 'no' ?>">
+          <i class="nav-icon fas fa-truck"></i>
             <p>
-              Supplier
+              Master
             </p>
+            <i class="right fas fa-angle-right"></i>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?php echo site_url('gudang') ?>" class="nav-link <?php echo $uri == 'gudang' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Gudang
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('karyawan') ?>" class="nav-link <?php echo $uri == 'karyawan' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Karyawan
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('platform') ?>" class="nav-link <?php echo $uri == 'platform' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Platform
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('reseller') ?>" class="nav-link <?php echo $uri == 'reseller' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Reseller
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('supplier') ?>" class="nav-link <?php echo $uri == 'supplier' ? 'active' : 'no' ?>">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Supplier
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a href="<?php echo site_url('reseller') ?>" class="nav-link <?php echo $uri == 'reseller' ? 'active' : 'no' ?>">
-            <i class="nav-icon fas fa-address-book"></i>
-            <p>
-              Reseller
-            </p>
-          </a>
-        </li>
+        
         <li class="nav-item">
           <a href="<?php echo site_url('transaksi') ?>" class="nav-link <?php echo $uri == 'transaksi' ? 'active' : 'no' ?>">
             <i class="fas fa-money-bill nav-icon"></i>

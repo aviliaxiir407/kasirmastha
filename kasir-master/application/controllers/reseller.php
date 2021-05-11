@@ -47,7 +47,7 @@ class Reseller extends CI_Controller {
 
 	function edit($id_reseller){
 		$where = array('id_reseller' => $id_reseller);
-		$data['reseller'] = $this->reseller_model->edit_data($where,'reseller')->result();
+		$data['reseller'] = $this->reseller_model->edit_data($where,'master.reseller')->result();
 		$this->load->view('edit_reseller',$data);
 		}
 	
@@ -67,7 +67,7 @@ class Reseller extends CI_Controller {
 				'id_reseller' => $id_reseller
 			);
 		 
-			$this->reseller_model->update_data($where,$data,'reseller');
+			$this->reseller_model->update_data($where,$data,'master.reseller');
 			redirect('reseller');
 		}
 

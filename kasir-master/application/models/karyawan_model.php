@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kategori_produk_model extends CI_Model {
+class Karyawan_model extends CI_Model {
 
-	private $table = 'master.kategori_produk';
+	private $table = 'master.karyawan';
 
 	public function create($data)
 	{
@@ -21,21 +21,21 @@ class Kategori_produk_model extends CI_Model {
 		return $this->db->delete($this->table);
 	}*/
 
-	public function delete($id_kategori)
+	public function delete($id_karyawan)
     {
-        $this->db->where('id_kategori', $id_kategori);
+        $this->db->where('id_karyawan', $id_karyawan);
         $this->db->delete($this->table);
     }
 
 	public function getKategori($id)
 	{
-		$this->db->where('id_kategori', $id);
+		$this->db->where('id_karyawan', $id);
 		return $this->db->get($this->table);
 	}
 
 	public function search($search="")
 	{
-		$this->db->like('kategori', $search);
+		$this->db->like('id_karyawan', $search);
 		return $this->db->get($this->table)->result();
 	}
 
