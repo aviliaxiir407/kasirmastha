@@ -5,14 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stok Masuk</title>
+  <title>Transaksi</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
-  <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/select2/css/select2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') ?>">
   <?php $this->load->view('partials/head'); ?>
+  <style>
+    @media(max-width: 576px){
+      .nota{
+        justify-content: center !important;
+        text-align: center !important;
+      }
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -28,7 +36,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Stok Masuk</h1>
+            <h1 class="m-0 text-dark">Tambah Supplier</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -37,29 +45,41 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="card">
-          <div class="card-header">
-           <a href="<?php echo base_url('stok_masuk/tambah'); ?>"> <button class="btn btn-success">Add</button> </a>
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">
+        <div class="row">
+          <div class="col-sm-6">
+          <form action="<?php echo site_url('supplier/add') ?>" method="post">
+            <div class="form-group">
+              <label> Nama </label>
+              <input type="text" class="form-control col-sm-6" placeholder="Nama" id="nama" name="nama">
+              <?= form_error('nama', '<small class="pl-3 text-danger">', '</small>'); ?>
+            </div>
+            <div class="form-group">
+              <label> Alamat </label>
+              <input type="text" class="form-control col-sm-6" placeholder="Alamat" id="alamat" name="alamat">
+              <?= form_error('alamat', '<small class="pl-3 text-danger">', '</small>'); ?>
+            </div>
+            <div class="form-group">
+              <label> Telepon </label>
+              <input type="text" class="form-control col-sm-6" placeholder="Telepon" id="telp" name="telp">
+              <?= form_error('telepon', '<small class="pl-3 text-danger">', '</small>'); ?>
+            </div>
+            <div class="form-group">
+              <label> Keterangan </label>
+              <input type="text" class="form-control col-sm-6" placeholder="Keterangan" id="ket" name="ket">
+              <?= form_error('keterangan', '<small class="pl-3 text-danger">', '</small>'); ?>
+            </div>
+             <div class="form-group">
+             <button class="btn btn-success" type="submit">Add</button>
+            </div>
+            </form>
           </div>
-          <div class="card-body">
-            <table class="table w-100 table-bordered table-hover" id="stok_masuk">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Tanggal</th>
-                  <th>Supplier</th>
-                  <th>Nama Produk</th>
-                  <th>Jumlah</th>
-                  <th>Total Harga</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
@@ -71,15 +91,8 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/vendor/adminlte/plugins/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/moment/moment.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/vendor/adminlte/plugins/select2/js/select2.min.js') ?>"></script>
-<script>
-  var readUrl = '<?php echo site_url('stok_masuk/read') ?>';
-  var addUrl = '<?php echo site_url('stok_masuk/add') ?>';
-  var getBarcodeUrl = '<?php echo site_url('produk/get_barcode') ?>';
-  var supplierSearchUrl = '<?php echo site_url('supplier/search') ?>';
-</script>
-<script src="<?php echo base_url('assets/js/stok_masuk.min.js') ?>"></script>
 </body>
 </html>

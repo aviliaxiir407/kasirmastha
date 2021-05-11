@@ -40,13 +40,24 @@
             <button class="btn btn-success" data-toggle="modal" data-target="#modal" onclick="add()">Add</button>
           </div>
           <div class="card-body">
-            <table class="table w-100 table-bordered table-hover" id="kategori_produk">
+            <table class="table w-100 table-bordered table-hover">
               <thead>
                 <tr>
                   <th>No</th>
                   <th>Kategori</th>
                   <th>Actions</th>
                 </tr>
+                <tbody>
+                   <?php $no = 1; 
+                   foreach ($kategori as $m) { ?>
+                    <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $m['kategori']; ?></td>
+                    <td class="text-center">
+                    <a href="<?= base_url('kategori_produk/delete/'); ?><?= $m['id_kategori']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="hapus">Hapus</button></a></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
               </thead>
             </table>
           </div>
@@ -93,7 +104,6 @@
   var readUrl = '<?php echo site_url('kategori_produk/read') ?>';
   var addUrl = '<?php echo site_url('kategori_produk/add') ?>';
   var deleteUrl = '<?php echo site_url('kategori_produk/delete') ?>';
-  var editUrl = '<?php echo site_url('kategori_produk/edit') ?>';
   var get_kategoriUrl = '<?php echo site_url('kategori_produk/get_kategori') ?>';
 </script>
 <script src="<?php echo base_url('assets/js/kategori_produk.min.js') ?>"></script>

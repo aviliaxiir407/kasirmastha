@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?php echo site_url('pelanggan') ?>" class="nav-link <?php echo $uri == 'pelanggan' ? 'active' : 'no' ?>">
+          <a href="<?php echo site_url('reseller') ?>" class="nav-link <?php echo $uri == 'reseller' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-address-book"></i>
             <p>
               Reseller
@@ -45,8 +45,8 @@
             <p>Transaksi</p>
           </a>
         </li>
-        <li class="nav-item has-treeview <?php echo $uri == 'produk' || $uri == 'kategori_produk' || $uri == 'satuan_produk' ? 'menu-open' : 'no' ?>">
-          <a href="#" class="nav-link <?php echo $uri == 'produk' || $uri == 'kategori_produk' || $uri == 'satuan_produk' ? 'active' : 'no' ?>">
+        <li class="nav-item has-treeview">
+          <a href="<?php echo site_url('produk') ?>" class="nav-link <?php echo $uri == 'produk' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-box"></i>
             <p>
               Produk
@@ -63,7 +63,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('satuan_produk') ?>" class="nav-link <?php echo $uri == 'satuan_produk' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('produk') ?>" class="nav-link <?php echo $uri == 'produk' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Daftar Produk

@@ -14,73 +14,76 @@ class Produk extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('produk');
+		$data['produk']=$this->produk_model->view();
+		$this->load->view('daftar_produk',$data);
 	}
 
-	public function read()
-	{
-		header('Content-type: application/json');
-		if ($this->produk_model->read()->num_rows() > 0) {
-			foreach ($this->produk_model->read()->result() as $produk) {
-				$data[] = array(
-					'barcode' => $produk->barcode,
-					'nama' => $produk->nama_produk,
-					'kategori' => $produk->kategori,
-					'satuan' => $produk->satuan,
-					'harga' => $produk->harga,
-					'stok' => $produk->stok,
-					'action' => '<button class="btn btn-sm btn-success" onclick="edit('.$produk->id.')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove('.$produk->id.')">Delete</button>'
-				);
-			}
-		} else {
-			$data = array();
-		}
-		$produk = array(
-			'data' => $data
-		);
-		echo json_encode($produk);
-	}
+
 
 	public function add()
 	{
-		$data = array(
-			'barcode' => $this->input->post('barcode'),
-			'nama_produk' => $this->input->post('nama_produk'),
-			'satuan' => $this->input->post('satuan'),
-			'kategori' => $this->input->post('kategori'),
-			'harga' => $this->input->post('harga'),
-			'stok' => $this->input->post('stok')
-		);
-		if ($this->produk_model->create($data)) {
-			echo json_encode($data);
-		}
+		$validation = $this->form_validation; //untuk menghemat penulisan kode
+
+        $validation->set_rules('nama', 'Nama', 'required');
+        $validation->set_rules('kategori', 'Kategori', 'required');
+        $validation->set_rules('beli', 'Harga Beli', 'required');
+        $validation->set_rules('jual', 'Harga Jual', 'required');
+		$validation->set_rules('resell', 'Harga Reseller', 'required');
+
+        if($validation->run() == FALSE) //jika form validation gagal tampilkan kembali form tambahnya
+        {
+			$data['kategori_produk']=$this->produk_model->get_kategori();
+			$data['supplier']=$this->produk_model->get_supplier();
+            $this->load->view('tambah_produk',$data);
+        } else {
+		  $this->produk_model->tambah();
+          redirect('produk');
+        }
 	}
 
-	public function delete()
+	/*public function delete()
 	{
 		$id = $this->input->post('id');
 		if ($this->produk_model->delete($id)) {
 			echo json_encode('sukses');
 		}
-	}
+	}*/
 
-	public function edit()
-	{
-		$id = $this->input->post('id');
-		$data = array(
-			'barcode' => $this->input->post('barcode'),
-			'nama_produk' => $this->input->post('nama_produk'),
-			'satuan' => $this->input->post('satuan'),
-			'kategori' => $this->input->post('kategori'),
-			'harga' => $this->input->post('harga'),
-			'stok' => $this->input->post('stok')
-		);
-		if ($this->produk_model->update($id,$data)) {
-			echo json_encode('sukses');
+	function edit($id_produk){
+		$where = array('id_produk' => $id_produk);
+		$data['kategori_produk']=$this->produk_model->get_kategori();
+		$data['supplier']=$this->produk_model->get_supplier();
+		$data['produk'] = $this->produk_model->edit_data($where,'produk')->result();
+		$this->load->view('edit_produk',$data);
 		}
-	}
+	
+	function update(){
+		$nama_produk = $this->input->post('nama');
+		$id_kategori = $this->input->post('kategori');
+		$id_supplier =   $this->input->post('supplier');
+		$harga_beli = $this->input->post('beli');
+		$harga_jual = $this->input->post('jual');
+		$harga_reseller = $this->input->post('resell');
 
-	public function get_produk()
+	
+			$data = array(
+				'nama_produk' => $nama_produk,
+				'id_kategori' => $id_kategori,
+				'id_supplier' => $id_supplier,
+				'harga_beli' => $harga_beli,
+				'harga_jual' => $harga_jual,
+				'harga_reseller'=>$harga_reseller
+			);
+		 
+			$where = array(
+				'id_produk' => $id_produk
+			);
+			
+			$this->produk_model->update_data($where,$data,'produk');
+			redirect('produk');
+		}
+
+	/*public function get_produk()
 	{
 		header('Content-type: application/json');
 		$id = $this->input->post('id');
@@ -140,7 +143,7 @@ class Produk extends CI_Controller {
 		$produk = $this->produk_model->dataStok();
 		echo json_encode($produk);
 	}
-
+*/
 }
 
 /* End of file Produk.php */

@@ -12,24 +12,24 @@ class Kategori_produk_model extends CI_Model {
 
 	public function read()
 	{
-		return $this->db->get($this->table);
+		return $this->db->get($this->table)->result_array();
 	}
 
-	public function update($id, $data)
+	/*public function delete($id)
 	{
-		$this->db->where('id', $id);
-		return $this->db->update($this->table, $data);
-	}
-
-	public function delete($id)
-	{
-		$this->db->where('id', $id);
+		$this->db->where('id_kategori', $id);
 		return $this->db->delete($this->table);
-	}
+	}*/
+
+	public function delete($id_kategori)
+    {
+        $this->db->where('id_kategori', $id_kategori);
+        $this->db->delete($this->table);
+    }
 
 	public function getKategori($id)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id_kategori', $id);
 		return $this->db->get($this->table);
 	}
 

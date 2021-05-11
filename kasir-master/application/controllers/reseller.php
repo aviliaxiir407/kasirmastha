@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Supplier extends CI_Controller {
+class Reseller extends CI_Controller {
 
 	public function __construct()
 	{
@@ -9,13 +9,13 @@ class Supplier extends CI_Controller {
 		if ($this->session->userdata('status') !== 'login' ) {
 			redirect('/');
 		}
-		$this->load->model('supplier_model');
+		$this->load->model('reseller_model');
 	}
 
 	public function index()
 	{
-		$data['supplier'] = $this->supplier_model->viewsupplier();
-        $this->load->view('supplier', $data);
+		$data['reseller'] = $this->reseller_model->view();
+        $this->load->view('reseller', $data);
 	}
 
 	public function add()
@@ -23,54 +23,52 @@ class Supplier extends CI_Controller {
         $validation = $this->form_validation; //untuk menghemat penulisan kode
 
         $validation->set_rules('nama', 'Nama', 'required');
-        $validation->set_rules('alamat', 'Alamat', 'required');
-        $validation->set_rules('telp', 'Telepon', 'required');
-        $validation->set_rules('ket', 'Keterangan', 'required');
+        $validation->set_rules('jk', 'Jenis Kelamin', 'required');
+        $validation->set_rules('alamat', 'Telepon', 'required');
+        $validation->set_rules('telp', 'Keterangan', 'required');
 
         if($validation->run() == FALSE) //jika form validation gagal tampilkan kembali form tambahnya
         {
-            $this->load->view('tambah_supplier');
+            $this->load->view('tambah_reseller');
         } else {
-          $this->supplier_model->tambah();
-          redirect('supplier');
+          $this->reseller_model->tambah();
+          redirect('reseller');
         }
 	}
 
-	public function delete($id_supplier)
+	public function delete($id_reseller)
 	{
-		$this->supplier_model->delete($id_supplier);
+		$this->reseller_model->delete($id_reseller);
 		echo '<script>
                 alert("Sukses Menghapus Data ");
-                window.location="'.base_url('supplier').'"
+                window.location="'.base_url('reseller').'"
             </script>';
 	}
 
-	function edit($id_supplier){
-		$where = array('id_supplier' => $id_supplier);
-		$data['supplier'] = $this->supplier_model->edit_data($where,'supplier')->result();
-		$this->load->view('edit_supplier',$data);
+	function edit($id_reseller){
+		$where = array('id_reseller' => $id_reseller);
+		$data['reseller'] = $this->reseller_model->edit_data($where,'reseller')->result();
+		$this->load->view('edit_reseller',$data);
 		}
 	
 	function update(){
-			$id_supplier = $this->input->post('id_supplier');
+			$id_reseller = $this->input->post('id_reseller');
 			$nama = $this->input->post('nama');
 			$alamat = $this->input->post('alamat');
 			$telp = $this->input->post('telp');
-			$keterangan = $this->input->post('ket');
 	
 			$data = array(
 				'nama' => $nama,
 				'alamat' => $alamat,
-				'telepon' => $telp,
-				'keterangan' => $keterangan
+				'telepon' => $telp
 			);
 		 
 			$where = array(
-				'id_supplier' => $id_supplier
+				'id_reseller' => $id_reseller
 			);
 		 
-			$this->supplier_model->update_data($where,$data,'supplier');
-			redirect('supplier');
+			$this->reseller_model->update_data($where,$data,'reseller');
+			redirect('reseller');
 		}
 
 	/*public function get_supplier()
@@ -96,7 +94,7 @@ class Supplier extends CI_Controller {
 		echo json_encode($data);
 	}*/
 
-}
+}  
 
 /* End of file Supplier.php */
 /* Location: ./application/controllers/Supplier.php */
