@@ -104,25 +104,25 @@
           <div class="row" style="margin-top: 2rem;">
             <div class="col-sm" style="height: 150px; border: 1px solid #ced4da; border-radius: .25rem; margin: 0 10px;">
               Delivery
-              <select class="form-control form-control-sm" place>
+              <select class="form-control form-control-sm" name="marketplace" place>
                 <option>Marketplace</option>
                 <option value="bukalapak">bukalapak</option>
                 <option value="shopee">shopee</option>
-                <option value="shopee">tokopedia cs1</option>
-                <option value="shopee">tokopedia cs3</option>
+                <option value="tokopediaCS1">tokopedia cs1</option>
+                <option value="tokopediaCS3">tokopedia cs3</option>
               </select>
-              <select class="form-control form-control-sm" place>
+              <select class="form-control form-control-sm" name="jenis_pengiriman" place>
                 <option>Jenis Pengiriman</option>
                 <option value="JNE">JNE</option>
                 <option value="JNT">JNT</option>
                 <option value="pos indonesia">Pos Indonesia</option>
               </select>
-              <input class="form-control form-control-sm" type="number" placeholder="Ongkir">
+              <input class="form-control form-control-sm" type="number" name="ongkir" placeholder="Ongkir">
             </div>
             <div class="col-sm" style="height: 150px; border: 1px solid #ced4da; border-radius: .25rem;margin: 0 10px;">
               Piutang
-              <input class="form-control form-control-sm" type="number" placeholder="Nominal">
-              <input class="form-control form-control-sm" type="number" placeholder="Kurang">
+              <input class="form-control form-control-sm" name="dp_piutang" type="number" placeholder="Nominal">
+              <input class="form-control form-control-sm" name="piutang_kurang" type="number" placeholder="Kurang">
             </div>
             
           </div>
