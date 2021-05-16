@@ -29,13 +29,10 @@ class Stok_masuk extends CI_Controller {
 		$this->load->view('tambah_stok',$data);
 	}
 
-	public function get_nama()
-	{
-		header('Content-type: application/json');
-		$id = $this->input->post('id');
-		echo json_encode($this->stok_masuk_model->getNama($id));
+	function supplier($sup){
+		$b['sup']=$this->stok_masuk_model->get_supplier($sup)->nama;
+		$this->load->view('tambah_stok',$b);
 	}
-
 	/*public function read()
 	{
 		header('Content-type: application/json');

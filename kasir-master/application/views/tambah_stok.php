@@ -60,7 +60,7 @@
               <select class="form-control" name="supplier" id="supplier">
               <option value="">No Selected</option>
               <?php foreach($supplier as $k) : ?>
-                            <option value="<?php echo $k->id_supplier;?>" > <?php echo $k->nama; ?></option>
+                            <option value="<?php echo $k->id_supplier,$k->nama;?>" > <?php echo $k->nama; ?></option>
               <?php endforeach; ?>
               </select>
             </div>
@@ -162,6 +162,7 @@
     }
     function tambah()
             {
+                
                 // untuk ambil nilai pada input
                  var sup = document.getElementById('supplier').value;
                  var barang = document.getElementById('barang').value;

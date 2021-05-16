@@ -15,6 +15,12 @@ class Stok_masuk_model extends CI_Model {
 		return $query;
 	}
 
+	function get_supplier($sup){
+		$this->db->select("*");
+		$this->db->where("id_supplier",$sup);
+		return $this->db->get('master.supplier')->row();
+	}
+
 	/*public function create($data)
 	{
 		return $this->db->insert($this->table, $data);
