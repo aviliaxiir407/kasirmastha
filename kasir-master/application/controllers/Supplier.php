@@ -45,7 +45,7 @@ class Supplier extends CI_Controller {
 
 	function edit($id_supplier){
 		$where = array('id' => $id_supplier);
-		$data['supplier'] = $this->supplier_model->edit_data($where,'supplier')->result();
+		$data['supplier'] = $this->supplier_model->edit_data($where,'master.supplier')->result();
 		$this->load->view('edit_supplier',$data);
 		}
 	
