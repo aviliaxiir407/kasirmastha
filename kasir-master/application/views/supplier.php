@@ -40,7 +40,7 @@
           <a href="<?= base_url('supplier/add/'); ?>"><button class="btn btn-success">Add</button></a>
           </div>
           <div class="card-body">
-            <table class="table w-100 table-bordered table-hover">
+            <table class="table w-100 table-bordered table-hover" id="supplier">
             <thead>
                   <tr>
                     <th>No</th>
@@ -51,20 +51,7 @@
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
-                <tbody>
-                   <?php $no = 1; 
-                   foreach ($supplier as $m) { ?>
-                    <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $m['nama']; ?></td>
-                    <td><?= $m['alamat']; ?></td>
-                    <td><?= $m['telepon']; ?></td>
-                    <td><?= $m['keterangan']; ?></td>
-                    <td class="text-center"><a href="<?= base_url('supplier/edit/'); ?><?= $m['id_supplier']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="edit">Edit</button></a>
-                    <a href="<?= base_url('supplier/delete/'); ?><?= $m['id_supplier']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="hapus">Hapus</button></a></td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
+                <!-- tidak perlu menampilkan tbody dari view, karena sudah ditampilkan controller Supplier/read -->
             </table>
           </div>
         </div>
@@ -118,5 +105,15 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+<!-- untuk tetap menggunakan swal fire, script tetap dipakai -->
+<script>
+  var readUrl = '<?php echo site_url('supplier/read') ?>';
+  var addUrl = '<?php echo site_url('supplier/add') ?>';
+  var removeUrl = '<?php echo site_url('supplier/delete') ?>';
+  var editUrl = '<?php echo site_url('supplier/edit') ?>';
+  var get_supplierUrl = '<?php echo site_url('supplier/get_supplier') ?>';
+</script>
+<script src="<?php echo base_url('assets/js/supplier.min.js') ?>"></script>
+
 </body>
 </html>

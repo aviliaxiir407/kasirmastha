@@ -23,8 +23,8 @@ class Supplier_model extends CI_Model {
 
 	public function delete($id_supplier)
     {
-        $this->db->where('id_supplier', $id_supplier);
-        $this->db->delete($this->table);
+        $this->db->where('id', $id_supplier);
+        return $this->db->delete($this->table);
     }
 
 	function edit_data($where,$table){      
@@ -45,6 +45,10 @@ class Supplier_model extends CI_Model {
 	{
 		$this->db->like('nama', $search);
 		return $this->db->get($this->table)->result();
+	}
+    public function read()
+	{
+		return $this->db->get($this->table);
 	}
 
 }
