@@ -33,7 +33,6 @@ class Produk extends CI_Controller {
         if($validation->run() == FALSE) //jika form validation gagal tampilkan kembali form tambahnya
         {
 			$data['kategori_produk']=$this->produk_model->get_kategori();
-			$data['supplier']=$this->produk_model->get_supplier();
             $this->load->view('tambah_produk',$data);
         } else {
 		  $this->produk_model->tambah();
@@ -52,15 +51,14 @@ class Produk extends CI_Controller {
 	function edit($id_produk){
 		$where = array('id_produk' => $id_produk);
 		$data['kategori_produk']=$this->produk_model->get_kategori();
-		$data['supplier']=$this->produk_model->get_supplier();
-		$data['produk'] = $this->produk_model->edit_data($where,'produk')->result();
+		$data['produk'] = $this->produk_model->edit_data($where,'master.produk')->result();
 		$this->load->view('edit_produk',$data);
 		}
 	
 	function update(){
+		$id_produk = $this->input->post('id_produk');
 		$nama_produk = $this->input->post('nama');
 		$id_kategori = $this->input->post('kategori');
-		$id_supplier =   $this->input->post('supplier');
 		$harga_beli = $this->input->post('beli');
 		$harga_jual = $this->input->post('jual');
 		$harga_reseller = $this->input->post('resell');
@@ -69,7 +67,6 @@ class Produk extends CI_Controller {
 			$data = array(
 				'nama_produk' => $nama_produk,
 				'id_kategori' => $id_kategori,
-				'id_supplier' => $id_supplier,
 				'harga_beli' => $harga_beli,
 				'harga_jual' => $harga_jual,
 				'harga_reseller'=>$harga_reseller
@@ -79,11 +76,11 @@ class Produk extends CI_Controller {
 				'id_produk' => $id_produk
 			);
 			
-			$this->produk_model->update_data($where,$data,'produk');
+			$this->produk_model->update_data($where,$data,'master.produk');
 			redirect('produk');
 		}
 
-	/*public function get_produk()
+	public function get_produk()
 	{
 		header('Content-type: application/json');
 		$id = $this->input->post('id');
@@ -143,7 +140,7 @@ class Produk extends CI_Controller {
 		$produk = $this->produk_model->dataStok();
 		echo json_encode($produk);
 	}
-*/
+
 }
 
 /* End of file Produk.php */

@@ -52,7 +52,7 @@
           <div class="col-sm-6">
           <?php foreach($produk as $u){ ?>
           <form action="<?php echo site_url('produk/update') ?>" method="post">
-          <input type="hidden" value="<?php echo $u->id_produk ?>" name="id_reseller">
+          <input type="hidden" value="<?php echo $u->id_produk ?>" name="id_produk">
             <div class="form-group">
               <label> Nama </label>
               <input type="text" class="form-control col-sm-6" value="<?php echo $u->nama_produk ?>" id="nama" name="nama">
@@ -66,15 +66,6 @@
                         <?php endforeach; ?>
                 </select>
               <?= form_error('kategori', '<small class="pl-3 text-danger">', '</small>'); ?>
-            </div>
-            <div class="form-group">
-              <label> Supplier </label>
-              <select class="form-control" name="supplier" id="supplier">
-                        <?php foreach($supplier as $k) : ?>
-                            <option value="<?php echo $k->id_supplier;?>"> <?php echo $k->nama; ?></option>
-                        <?php endforeach; ?>
-                </select>
-              <?= form_error('supplier', '<small class="pl-3 text-danger">', '</small>'); ?>
             </div>
             <div class="form-group">
               <label> Harga Beli </label>

@@ -67,7 +67,7 @@ class Supplier extends CI_Controller {
 				'id' => $id_supplier
 			);
 		 
-			$this->supplier_model->update_data($where,$data,'supplier');
+			$this->supplier_model->update_data($where,$data,'master.supplier');
 			redirect('supplier');
 		}
 

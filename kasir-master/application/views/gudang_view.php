@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daftar Produk</title>
+  <title>Kategori Produk</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
@@ -25,49 +25,40 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Daftar Produk</h1>
+            <h1 class="m-0 text-dark">Karyawan</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-  
 
-     <!-- Main content -->
-     <section class="content">
+    <!-- Main content -->
+    <section class="content">
       <div class="container-fluid">
         <div class="card">
           <div class="card-header">
-          <a href="<?= base_url('produk/add/'); ?>"><button class="btn btn-success">Add</button></a>
+            <button class="btn btn-success" data-toggle="modal" data-target="#modal" onclick="add()">Add</button>
           </div>
           <div class="card-body">
             <table class="table w-100 table-bordered table-hover">
               <thead>
-              <tr>
+                <tr>
                   <th>No</th>
-                  <th>Kategori</th>
-                  <th>Nama Produk</th>
-                  <th>Harga beli</th>
-                  <th>Harga jual</th>
-                  <th>Harga reseller</th>
-                  <th>Aksi</th>
-              </tr>
-              </thead>
-              <tbody>
+                  <th>Gudang</th>
+                  <th>Actions</th>
+                </tr>
+                <tbody>
                    <?php $no = 1; 
-                   foreach ($produk as $m) { ?>
+                   foreach ($gudang as $m) { ?>
                     <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $m['kategori']; ?></td>
-                    <td><?= $m['nama_produk']; ?></td>
-                    <td><?= $m['harga_beli']; ?></td>
-                    <td><?= $m['harga_jual']; ?></td>
-                    <td><?= $m['harga_reseller']; ?></td>
-                    <td class="text-center"><a href="<?= base_url('produk/edit/'); ?><?= $m['id_produk']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="edit">Edit</button></a>
-                    <a href="<?= base_url('produk/delete/'); ?><?= $m['id_produk']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="hapus">Hapus</button></a></td>
+                    <td><?= $m['nama_gudang']; ?></td>
+                    <td class="text-center">
+                    <a href="<?= base_url('gudang/delete/'); ?><?= $m['id_gudang']; ?>"><button type="submit"  class="btn btn-sm btn-primary" name="hapus">Hapus</button></a></td>
                     </tr>
                     <?php } ?>
                 </tbody>
+              </thead>
             </table>
           </div>
         </div>
@@ -79,6 +70,29 @@
 
 </div>
 
+<div class="modal fade" id="modal">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Add Data</h5>
+    <button class="close" data-dismiss="modal">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form id="form">
+      <input type="hidden" name="id">
+      <div class="form-group">
+        <label>Nama Gudang</label>
+        <input type="text" class="form-control" placeholder="Nama Gudang" name="nama" required>
+      </div>
+      <button class="btn btn-success" type="submit">Add</button>
+      <button class="btn btn-danger" data-dismiss="modal">Close</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
 <!-- ./wrapper -->
 <?php $this->load->view('includes/footer'); ?>
 <?php $this->load->view('partials/footer'); ?>
@@ -86,5 +100,11 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+<script>
+  var readUrl = '<?php echo site_url('gudang/read') ?>';
+  var addUrl = '<?php echo site_url('gudang/add') ?>';
+  var deleteUrl = '<?php echo site_url('gudang/delete') ?>';
+</script>
+<script src="<?php echo base_url('assets/js/kategori_produk.min.js') ?>"></script>
 </body>
 </html>

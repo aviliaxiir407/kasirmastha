@@ -52,32 +52,43 @@
           <div class="col-sm-6">
           <div class="form-group">
               <label>Tanggal</label>
-              <input id="tanggal" type="text" class="form-control col-sm-6" placeholder="Tanggal" name="tanggal" disabled>
+              <input id="tanggal" type="text" class="form-control col-sm-6" 
+              value="<?php date_default_timezone_set('Asia/Jakarta'); echo date('d-m-Y H:i:s');?> " name="tanggal" disabled>
           </div>
           <div class="form-group">
               <label>Supplier</label>
-              <select id="supplier" class="form-control select2 col-sm-6" onchange="getNama()"></select>
+              <select class="form-control" name="supplier" id="supplier">
+              <option value="">No Selected</option>
+              <?php foreach($supplier as $k) : ?>
+                            <option value="<?php echo $k->id_supplier;?>" > <?php echo $k->nama; ?></option>
+              <?php endforeach; ?>
+              </select>
             </div>
             <div class="form-group">
               <label>Nama Barang</label>
               <div class="form-inline">
-                <select id="nama" class="form-control select2 col-sm-6" onchange="getNama()"></select>
-                <span class="ml-3 text-muted" id="nama_produk"></span>
+              <select class="form-control select2" style="width: 100%;" name="barang" id="barang">
+              <option value="">No Selected</option>
+              <?php foreach($barang as $k) : ?>
+                            <option value="<?php echo $k->id_produk;?>" > <?php echo $k->nama_produk; ?></option>
+              <?php endforeach; ?>
+              </select>
+              </select>
+              </select>
               </div>
-              <small class="form-text text-muted" id="sisa"></small>
             </div>
             <div class="form-group">
               <label>Jumlah</label>
-              <input type="number" class="form-control col-sm-6" placeholder="Jumlah" id="jumlah" onkeyup="checkEmpty()">
+              <input type="number" class="form-control col-sm-6" placeholder="Jumlah" name="jumlah" id="jumlah">
             </div>
             <div class="form-group">
-              <button id="tambah" class="btn btn-success" onclick="checkStok()" disabled>Tambah</button>
+              <button id="tambah" class="btn btn-success" onclick="tambah();">Tambah</button>
             </div>
           </div>
           <div class="col-sm-6 d-flex justify-content-end text-right nota">
             <div>
               <div class="mb-0">
-                <b class="mr-2">Nota</b> <span id="nota"></span>
+                <b class="mr-2">Nota</b> <span id="nota"><?php echo 'STM-'.date('dmyHis', time());?></span>
               </div>
               <span id="total" style="font-size: 80px; line-height: 1" class="text-danger">0</span>
             </div>
@@ -86,14 +97,15 @@
         </div>
         <div class="card-body">
         <b class="mr-2">Tanggal : </b> <span id="nota"></span>
-          <table class="table w-100 table-bordered table-hover" id="transaksi">
+          <table class="table w-100 table-bordered table-hover">
             <thead>
               <tr>
                 <th>Supplier</th>
                 <th>Nama Barang</th>
-                <th>Harga Beli</th>
+                <!--<th>Harga Beli</th>-->
                 <th>Stok Ditambahkan</th>
-                <th>Total</th>
+                <!--<th>Total</th>-->
+                <th>Aksi</th>
               </tr>
             </thead>
           </table>
@@ -121,13 +133,62 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/moment/moment.min.js') ?>"></script>
 <script>
-  var produkGetNamaUrl = '<?php echo site_url('produk/get_nama') ?>';
-  var produkGetStokUrl = '<?php echo site_url('produk/get_stok') ?>';
-  var addUrl = '<?php echo site_url('transaksi/add') ?>';
-  var getBarcodeUrl = '<?php echo site_url('produk/get_barcode') ?>';
-  var pelangganSearchUrl = '<?php echo site_url('pelanggan/search') ?>';
-  var cetakUrl = '<?php echo site_url('transaksi/cetak/') ?>';
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  })
 </script>
-<script src="<?php echo base_url('assets/js/unminify/transaksi.js') ?>"></script>
+<script>
+      function getNama() {
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            data: {
+                id: $("#id_produk").val()
+            },
+            success: res => {
+                $("#nama_produk").html(res.nama_produk);
+                $("#harga_beli").html(res.harga_beli);
+            },
+            error: err => {
+                console.log(err)
+            }
+        })
+    }
+    function tambah()
+            {
+                // untuk ambil nilai pada input
+                 var sup = document.getElementById('supplier').value;
+                 var barang = document.getElementById('barang').value;
+                 var jumlah = document.getElementById('jumlah').value;
+                  
+                  
+                  // 0 = baris awal pada tabel
+                  var table = document.getElementsByTagName('table')[0];
+                  
+                  // tambah baris kosong pada tabel
+                  // 0 = dihitung dari atas 
+                  // table.rows.length = menambahkan pada akhir baris
+                  // table.rows.length/2 = menambahkan data pada baris tengah tabel , urutan baris ke 2 
+                  var newRow = table.insertRow(table.rows.length);
+                  
+                  // tambah cell pada baris baru
+                  var cell1 = newRow.insertCell(0);
+                  var cell2 = newRow.insertCell(1);
+                  var cell3 = newRow.insertCell(2);
+                  var cell4 = newRow.insertCell(3);
+                  
+                  // tambah nilai ke dalam cell
+                  cell1.innerHTML = sup;
+                  cell2.innerHTML = barang;
+                  cell3.innerHTML = jumlah;
+                  cell4.innerHTML = '<button id="tambah" class="btn btn-success">Delete</button>';
+            }
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reseller_model     extends CI_Model {
 
-	private $table = 'reseller';
+	private $table = 'master.reseller';
 
 	public function tambah()
     {

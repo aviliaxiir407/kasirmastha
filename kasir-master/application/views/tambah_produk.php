@@ -67,16 +67,6 @@
               <?= form_error('kategori', '<small class="pl-3 text-danger">', '</small>'); ?>
             </div>
             <div class="form-group">
-              <label> Supplier </label>
-              <select class="form-control" name="supplier" id="supplier">
-                        <option value="">No Selected</option>
-                        <?php foreach($supplier as $k) : ?>
-                            <option value="<?php echo $k->id_supplier;?>"> <?php echo $k->nama; ?></option>
-                        <?php endforeach; ?>
-                </select>
-              <?= form_error('supplier', '<small class="pl-3 text-danger">', '</small>'); ?>
-            </div>
-            <div class="form-group">
               <label> Harga Beli </label>
               <input type="text" class="form-control col-sm-6" placeholder="Harga Beli" id="beli" name="beli">
               <?= form_error('beli', '<small class="pl-3 text-danger">', '</small>'); ?>
