@@ -1,28 +1,33 @@
 let url, supplier = $("#supplier").DataTable({
+    // responsive: true,
+    // scrollX: true,
     responsive: true,
-    scrollX: true,
-    ajax: readUrl,
-    columnDefs: [{
-        searcable: false,
-        orderable: false,
-        targets: 0
-    }],
-    order: [
-        [1, "asc"]
-    ],
-    columns: [{
-        data: null
-    }, {
-        data: "nama"
-    }, {
-        data: "alamat"
-    }, {
-        data: "telepon"
-    }, {
-        data: "keterangan"
-    }, {
-        data: "action"
-    }]
+        lengthChange: false,
+        searching: false,
+        scrollX: true,
+    // ajax: readUrl,
+    // columnDefs: [{
+    //     searcable: false,
+    //     orderable: false,
+    //     targets: 0
+    // }],
+    // order: [
+    //     [1, "asc"]
+    // ]
+    // ,
+    // columns: [{
+    //     data: "no"
+    // }, {
+    //     data: "nama"
+    // }, {
+    //     data: "alamat"
+    // }, {
+    //     data: "telepon"
+    // }, {
+    //     data: "keterangan"
+    // }, {
+    //     data: "action"
+    // }]
 });
 
 function reloadTable() {

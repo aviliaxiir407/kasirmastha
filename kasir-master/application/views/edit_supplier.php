@@ -52,7 +52,7 @@
           <div class="col-sm-6">
           <?php foreach($supplier as $u){ ?>
             <form action="<?php echo base_url(). 'supplier/update'; ?>" method="post">
-            <input type="hidden" value="<?php echo $u->id_supplier ?>" name="id_supplier">
+            <input type="hidden" value="<?php echo $u->id ?>" name="id_supplier">
             <div class="form-group">
               <label> Nama </label>
               <input type="text" class="form-control col-sm-6" value="<?php echo $u->nama ?>" id="nama" name="nama">

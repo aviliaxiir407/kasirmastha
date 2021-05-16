@@ -36,17 +36,15 @@ class Supplier extends CI_Controller {
         }
 	}
 
-	public function delete($id_supplier)
+	public function delete()
 	{
-		$this->supplier_model->delete($id_supplier);
-		echo '<script>
-                alert("Sukses Menghapus Data ");
-                window.location="'.base_url('supplier').'"
-            </script>';
+		$id = $this->input->post('id');
+		$this->supplier_model->delete($id);
+			echo json_encode('sukses');
 	}
 
 	function edit($id_supplier){
-		$where = array('id_supplier' => $id_supplier);
+		$where = array('id' => $id_supplier);
 		$data['supplier'] = $this->supplier_model->edit_data($where,'supplier')->result();
 		$this->load->view('edit_supplier',$data);
 		}
@@ -66,12 +64,36 @@ class Supplier extends CI_Controller {
 			);
 		 
 			$where = array(
-				'id_supplier' => $id_supplier
+				'id' => $id_supplier
 			);
 		 
 			$this->supplier_model->update_data($where,$data,'supplier');
 			redirect('supplier');
 		}
+
+	public function read()
+	{
+		header('Content-type: application/json');
+		if ($this->supplier_model->read()->num_rows() > 0) {
+			$no = 1;
+			foreach ($this->supplier_model->read()->result() as $supplier) {
+				$data[] = array(
+					'no' => $no++,
+					'nama' => $supplier->nama,
+					'alamat' => $supplier->alamat,
+					'telepon' => $supplier->telepon,
+					'keterangan' => $supplier->keterangan,
+					'action' => '<a href="'.base_url().'supplier/edit/'.$supplier->id.'"><button class="btn btn-sm btn-success">Edit</button></a> <button class="btn btn-sm btn-danger" onclick="remove('.$supplier->id.')">Delete</button>'
+				);
+			}
+		} else {
+			$data = array();
+		}
+		$supplier = array(
+			'data' => $data
+		);
+		echo json_encode($supplier);
+	}
 
 	/*public function get_supplier()
 	{
