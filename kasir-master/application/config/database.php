@@ -72,14 +72,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-
+// pgsql:host=localhost;port=5432;dbname=mastha
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => '123',
-	'database' => 'mastha',
-	'dbdriver' => 'postgre',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'db_kasir',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

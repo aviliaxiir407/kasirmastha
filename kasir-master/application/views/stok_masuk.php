@@ -46,12 +46,12 @@
             <table class="table w-100 table-bordered table-hover" id="stok_masuk">
               <thead>
                 <tr>
-                  <th>No</th>
+                <th>No</th>
                   <th>Tanggal</th>
-                  <th>Supplier</th>
+                  <th>Barcode</th>
                   <th>Nama Produk</th>
                   <th>Jumlah</th>
-                  <th>Total Harga</th>
+                  <th>Keterangan</th>
                 </tr>
               </thead>
             </table>

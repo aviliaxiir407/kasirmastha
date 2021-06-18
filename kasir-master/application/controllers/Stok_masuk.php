@@ -33,7 +33,7 @@ class Stok_masuk extends CI_Controller {
 		$b['sup']=$this->stok_masuk_model->get_supplier($sup)->nama;
 		$this->load->view('tambah_stok',$b);
 	}
-	/*public function read()
+	public function read()
 	{
 		header('Content-type: application/json');
 		if ($this->stok_masuk_model->read()->num_rows() > 0) {
@@ -117,7 +117,7 @@ class Stok_masuk extends CI_Controller {
 		$now = date('d m Y');
 		$total = $this->stok_masuk_model->stokHari($now);
 		echo json_encode($total->total == null ? 0 : $total);
-	}*/
+	}
 
 }
 

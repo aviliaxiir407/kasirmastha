@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produk_model extends CI_Model {
 
-	private $table = 'master.produk';
+	private $table = 'produk';
 
 	public function view()
 	{
@@ -41,7 +41,7 @@ class Produk_model extends CI_Model {
         $this->db->update($table,$data);
     }
 
-	/*public function update($id, $data)
+	public function update($id, $data)
 	{
 		$this->db->where('id', $id);
 		return $this->db->update($this->table, $data);
@@ -94,7 +94,7 @@ class Produk_model extends CI_Model {
 	{
 		return $this->db->query('SELECT produk.nama_produk, produk.stok FROM `produk` ORDER BY CONVERT(stok, decimal) DESC LIMIT 50')->result();
 	}
-	*/
+	
 
 }
 

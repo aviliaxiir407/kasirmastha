@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Karyawan_model extends CI_Model {
 
-	private $table = 'master.karyawan';
+	private $table = 'karyawan';
 
 	public function create($data)
 	{

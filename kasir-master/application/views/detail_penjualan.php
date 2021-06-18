@@ -46,10 +46,12 @@
                 <tr>
                   <th>No</th>
                   <th>Tanggal</th>
-                  <th>No. Nota</th> 
-                  <th>Total Penjualan</th> 
-                  <th>Metode Pembayaran</th> 
-                  <th>Aksi</th>
+                  <th>Nama Produk</th> 
+                  <th>Total Bayar</th> 
+                  <th>Jumlah Uang</th> 
+                  <th>Diskon</th> 
+                  <th>Pelanggan</th> 
+                  <th>Action</th> 
                 </tr>
               </thead>
             </table>
